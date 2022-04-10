@@ -1,16 +1,13 @@
 name: Commit Stage
-on: [push]
+on: push
 
 jobs:
   build:
     name: Build and Test
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu-20.04
     permissions:
       contents: read
-      packages: write
       security-events: write
-
     steps:
       - name: Checkout source code
         uses: actions/checkout@v2
@@ -25,7 +22,7 @@ jobs:
         id: scan
         with:
           path: "${{ github.workspace }}"
-          fail-build: true
+          fail-build: false
           severity-cutoff: high
           acs-report-enable: true
       - name: Upload vulnerability report
