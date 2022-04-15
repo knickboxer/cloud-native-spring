@@ -1,7 +1,7 @@
 package de.gdevelop.cloudnative.catalogservice.controller;
 
-import de.gdevelop.cloudnative.catalogservice.service.BookAlreadyExistsException;
-import de.gdevelop.cloudnative.catalogservice.service.BookNotFoundException;
+import de.gdevelop.cloudnative.catalogservice.domain.BookAlreadyExistsException;
+import de.gdevelop.cloudnative.catalogservice.domain.BookNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;

@@ -1,25 +1,20 @@
 package de.gdevelop.cloudnative.catalogservice.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.gdevelop.cloudnative.catalogservice.domain.Book;
-import de.gdevelop.cloudnative.catalogservice.service.BookAlreadyExistsException;
-import de.gdevelop.cloudnative.catalogservice.service.BookNotFoundException;
-import de.gdevelop.cloudnative.catalogservice.service.BookService;
+import de.gdevelop.cloudnative.catalogservice.domain.BookAlreadyExistsException;
+import de.gdevelop.cloudnative.catalogservice.domain.BookNotFoundException;
+import de.gdevelop.cloudnative.catalogservice.domain.BookService;
 import org.junit.jupiter.api.Test;
-import org.mockito.BDDMockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import java.beans.beancontext.BeanContext;
 import java.util.List;
 
 import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;

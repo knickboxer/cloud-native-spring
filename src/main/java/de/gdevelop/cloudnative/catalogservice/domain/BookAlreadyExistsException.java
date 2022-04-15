@@ -1,4 +1,4 @@
-package de.gdevelop.cloudnative.catalogservice.service;
+package de.gdevelop.cloudnative.catalogservice.domain;
 
 /**
  * @author Gerhard

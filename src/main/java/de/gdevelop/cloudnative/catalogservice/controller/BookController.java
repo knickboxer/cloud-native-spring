@@ -1,7 +1,7 @@
 package de.gdevelop.cloudnative.catalogservice.controller;
 
 import de.gdevelop.cloudnative.catalogservice.domain.Book;
-import de.gdevelop.cloudnative.catalogservice.service.BookService;
+import de.gdevelop.cloudnative.catalogservice.domain.BookService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;

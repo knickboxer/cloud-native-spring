@@ -1,6 +1,6 @@
 package de.gdevelop.cloudnative.catalogservice.repository;
 
-import de.gdevelop.cloudnative.catalogservice.service.BookRepository;
+import de.gdevelop.cloudnative.catalogservice.domain.BookRepository;
 import de.gdevelop.cloudnative.catalogservice.domain.Book;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,5 @@
 package de.gdevelop.cloudnative.catalogservice.domain;
 
-import org.hibernate.validator.constraints.ISBN;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -22,4 +20,4 @@ public record Book(
         @NotNull(message = "The book price must be defined.")
         @Positive(message = "The book price must be greater than zero.")
         Double price
-) { }
+) {}

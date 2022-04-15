@@ -1,6 +1,4 @@
-package de.gdevelop.cloudnative.catalogservice.service;
-
-import de.gdevelop.cloudnative.catalogservice.domain.Book;
+package de.gdevelop.cloudnative.catalogservice.domain;
 
 import java.util.Optional;
 
