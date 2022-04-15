@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HomeController {
 
-    @Value("${polar.greeting}:Hello fallback")
+    @Value("${polar.greeting:'Hello fallback'}")
     String greeting;
 
     @GetMapping("/")
