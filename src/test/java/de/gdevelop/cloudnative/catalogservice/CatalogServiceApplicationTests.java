@@ -4,12 +4,14 @@ import de.gdevelop.cloudnative.catalogservice.domain.Book;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ActiveProfiles("integration")
 class CatalogServiceApplicationTests {
 
     @Autowired
@@ -17,7 +19,7 @@ class CatalogServiceApplicationTests {
 
     @Test
     void whenPostRequestThenBookCreated() {
-        var expectedBook = Book.build("1231231231", "Title", "Author", 1.23);
+        var expectedBook = Book.build("1231231231", "Title", "Author", 1.23, "DeveloperPress");
 
         webTestClient
                 .post()

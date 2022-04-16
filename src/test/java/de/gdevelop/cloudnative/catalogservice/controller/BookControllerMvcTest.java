@@ -1,14 +1,17 @@
 package de.gdevelop.cloudnative.catalogservice.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.gdevelop.cloudnative.catalogservice.config.DataJdbcConfig;
 import de.gdevelop.cloudnative.catalogservice.domain.Book;
 import de.gdevelop.cloudnative.catalogservice.domain.BookAlreadyExistsException;
 import de.gdevelop.cloudnative.catalogservice.domain.BookNotFoundException;
 import de.gdevelop.cloudnative.catalogservice.domain.BookService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -21,11 +24,14 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(BookController.class)
+//@Import(DataJdbcConfig.class)
+//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class BookControllerMvcTest {
 
     public static final String TITLE = "Title";
     private static final String AUTHOR = "Author";
     private static final Double PRICE = 1.23;
+    private static final String  PUBLISHER = "DeveloperPress";
 
     @Autowired
     MockMvc mockMvc;
@@ -48,7 +54,8 @@ class BookControllerMvcTest {
                 .andExpect(jsonPath("$[0].isbn", is(isbn)))
                 .andExpect(jsonPath("$[0].title", is(TITLE)))
                 .andExpect(jsonPath("$[0].author", is(AUTHOR)))
-                .andExpect(jsonPath("$[0].price", is(PRICE)));
+                .andExpect(jsonPath("$[0].price", is(PRICE)))
+                .andExpect(jsonPath("$[0].publisher", is(PUBLISHER)));
     }
 
 
@@ -92,6 +99,6 @@ class BookControllerMvcTest {
     }
 
     private Book getBook(String isbn) {
-        return Book.build(isbn, TITLE, AUTHOR, PRICE);
+        return Book.build(isbn, TITLE, AUTHOR, PRICE, PUBLISHER);
     }
 }

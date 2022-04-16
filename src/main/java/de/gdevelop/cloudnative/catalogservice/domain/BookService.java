@@ -1,5 +1,6 @@
 package de.gdevelop.cloudnative.catalogservice.domain;
 
+import de.gdevelop.cloudnative.catalogservice.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
 /**
@@ -47,6 +48,9 @@ public class BookService {
                 book.title(),
                 book.author(),
                 book.price(),
+                book.publisher(),
+                existingBook.get().createdDate(),
+                existingBook.get().lastModifiedDate(),
                 existingBook.get().version()
         );
         return bookRepository.save(bookToUpdate);

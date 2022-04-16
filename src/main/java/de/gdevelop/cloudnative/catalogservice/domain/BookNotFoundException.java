@@ -5,6 +5,6 @@ package de.gdevelop.cloudnative.catalogservice.domain;
  */
 public class BookNotFoundException extends RuntimeException{
     public BookNotFoundException(String isbn) {
-        super("The Book with the ISBN " + isbn + " was not found." );
+        super("The book with ISBN " + isbn + " was not found." );
     }
 }
