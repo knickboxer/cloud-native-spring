@@ -92,6 +92,6 @@ class BookControllerMvcTest {
     }
 
     private Book getBook(String isbn) {
-        return new Book(isbn, TITLE, AUTHOR, PRICE);
+        return Book.build(isbn, TITLE, AUTHOR, PRICE);
     }
 }

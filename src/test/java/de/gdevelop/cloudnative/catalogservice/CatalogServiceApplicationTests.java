@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CatalogServiceApplicationTests {
@@ -16,7 +17,7 @@ class CatalogServiceApplicationTests {
 
     @Test
     void whenPostRequestThenBookCreated() {
-        var expectedBook = new Book("1231231231", "Title", "Author", 1.23);
+        var expectedBook = Book.build("1231231231", "Title", "Author", 1.23);
 
         webTestClient
                 .post()
@@ -32,6 +33,7 @@ class CatalogServiceApplicationTests {
 
     @Test
     void contextLoads() {
+        assertTrue(true);
     }
 
 }

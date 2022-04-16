@@ -1,30 +1,42 @@
 server:
   port: 9001
+  tomcat:
+    connection-timeout: 2s            # The max time (ms) between accepting TCP connection amd receiving HTTP request
+    keep-alive-timeout: 15s           # The time to keep a connection open while waiting for new HTTP requests.
+    threads:
+      max: 50                         # The maximum number of threads -> simultaneously executable requests.
+      min-spare: 5                    # The minimum number of available threads
+
+spring:
+  application:
+    name: catalog-service             # The name of the application, used by the config server to filter the configuration
+  config:
+    import: "optional:configserver:"  # Imports configuration data from a config server when it’s available.
+  cloud:
+    config:
+      uri: http://localhost:8888      # The URL of the configuration server.
+      request-connect-timeout: 5000   # Timeout on waiting to connect to the config server (ms).
+      request-read-timeout: 5000      # Timeout on waiting to read configuration data from the config server (ms).
+      fail-fast: false                # Makes a failure to connect to the config server fatal.  -> SHOULD BE TRUE FOR PRODUCTION
+      retry:
+        max-attempts: 6               # Maximum number of attempts.
+        initial-interval: 1000        # Initial retry interval for backoff (ms).
+        max-interval: 2000            # Maximum retry interval for backoff (ms)
+        multiplier: 1.1               # Multiplier to compute the next interval.
+  datasource:
+    username: user                    # A user with privileges to access the given database.
+    password: password                #The password for the given user
+                                      # The JDBC URL to identify with which database you want to establish a connection
+    url: jdbc:postgresql://localhost:5432/polardb_catalog
+    hikari:
+      connection-timeout: 2000        # The maximum time (ms) waiting for getting a connection from the pool
+      maximum-pool-size: 5            # The maximum number of connections HikariCP will keep in the pool.
 
 management:
   endpoints:
     web:
       exposure:
-        include: refresh
-
-spring:
-  profiles:
-    active: prod
-  application:
-    name: catalog-service
-  config:
-    import: "optional:configserver:"
-  cloud:
-    config:
-      uri: http://localhost:8888
-      request-connect-timeout: 5000
-      request-read-timeout: 5000
-      fail-fast: false
-      retry:
-        max-attempts: 6
-        initial-interval: 1000
-        max-interval: 2000
-        multiplier: 1.1
+        include: refresh              # Exposes the "/actuator/refresh" endpoint through HTTP.
 
 polar:
-  greeting: Welcome to the production catalog from the application.yml
+  greeting: Welcome to the local book catalog!
